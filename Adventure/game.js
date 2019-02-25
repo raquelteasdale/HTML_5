@@ -34,14 +34,20 @@ var player = {
     race:"Human",
     age:28,
     backpack:{
+        
         grapple:0,
-        water:0,
+        
         knife:0,
+        
+        water:{
+            
+            full:0,
+        }
     }
 }
 
 var backpackChk = function(){
-    alert("Grapple: "+player.backpack.grapple+"\n Water: "+player.backpack.water+"\n Knife: "+player.backpack.knife);
+    alert("Grapple: "+player.backpack.grapple+"\n Water: "+player.backpack.water.full+"\n Knife: "+player.backpack.knife);
 }
 
 function GetRandInt(max){
@@ -64,13 +70,17 @@ Game();
         
         var playerName = prompt("What is your name?");
         
+        while(!confirm("Are you sure you want "+playerName+" as your name?")){
+            playerName = prompt("What is your name?");
+        }
+        
         alert("Welcome to the Golden Compass Adventure "+ playerName);
     
         Adventure();
         
         function Adventure(){
             
-            var adventure = prompt("You are in a blank golden field, a compass in your hand. /n - Look /n - Follow compass").toLowerCase();
+            var adventure = prompt("You are in a blank golden field, a compass in your hand. \n - Look \n - Follow compass").toLowerCase();
             
             if(adventure == "look" || adventure == "look around"){
                 alert("You breath in the fresh air, the sun is setting in front of you and you look down at your compass. It points towards the golden sun.");
@@ -85,7 +95,7 @@ Game();
         
         function Compass(){
             
-            var compass = prompt("You start walking north through the golden field, wheat brushes against your legs. You can hear something tossing in the wheat ahead, but you cannot see what. /n - Continue North /n - Go Right /n - Go Left").toLowerCase();
+            var compass = prompt("You start walking north through the golden field, wheat brushes against your legs. You can hear something tossing in the wheat ahead, but you cannot see what. \n - Continue North \n - Go Right \n - Go Left").toLowerCase();
                 
             if(compass == "continue north" || compass == "north"){
                 alert("You continue to walk towards the sun, you hear growling in front of you. A strange hound leaps through the golden canvas, it jumps on you. You try and fight it off of you but you fail, it nips your arm and drags you into the wheat, you die.")
@@ -103,7 +113,7 @@ Game();
             
         function Right(){
 
-            var right = prompt("You go right. The wheat soon turns into an open green land, the animal behind you howls. You see a home far off, your direction points North but you are now walking East. /n - Continue to the home /n - Follow compass").toLowerCase();
+            var right = prompt("You go right. The wheat soon turns into an open green land, the animal behind you howls. You see a home far off, your direction points North but you are now walking East. \n - Continue to the home \n - Follow compass").toLowerCase();
         
             if(right == "continue to the home" || right == "continue" || right == "home"){
                 Home();
@@ -128,28 +138,47 @@ Game();
         }
         
         function Downstream(){
-            var downstream = prompt("You find a backpack wedged between a few stones beside the stream. \n - Search backpack \n - Leave backpack alone");
+            var downstream = prompt("You find a backpack wedged between a few stones beside the stream. \n - Search backpack \n - Leave backpack");
             
             if(downstream == "search backpack" || downstream == "search"){
-                var downstream("You grab the torn backpack and unzip it. It holds rope with a grappel at the end, an empty bottle, and a knife strapped inside. \n - Take backpack \n - Leave backpack").toLowerCase();
+                var downstream = prompt("You grab the torn backpack and unzip it. It holds rope with a grappel at the end, an empty bottle, and a knife strapped inside. \n - Take backpack \n - Drop backpack").toLowerCase();
             }
             
-            else if(downstream == "leave backpack alone" || downstream == "leave backpack"){
-                var upstream("You leave the backpack untouched. It seems there is not much downstream. You decide to back up it to your original spot. \n - Go back to starting point \n - Go upstream").toLowerCase();
+            else if(downstream == "leave backpack" || downstream == "leave"){
+                alert("You leave the backpack untouched. It seems there is not much downstream. You decide to scale back up the stream to starting point");
+                    Compass();
             }
             
-            if(downstream == "take backpack"){
-                player.backpack.grapple ++;
-                player.backpack.water ++;
-                player.backpack.number ++;
+            if(downstream == "take backpack" || downstream == "take"){
+                takeBackpack();
             }
             
-            if(downstream == "Go back to starting point"){
-                Compass();
+            else if(downstream == "drop backpack" || downstream == "drop"){
+                alert("You leave the backpack untouched. It seems there is not much downstream. You decide to scale back up the stream to starting point.");
+                    Compass();
+            }
+
+        }
+        
+        function takeBackpack(){
+            
+            player.backpack.grapple ++;
+            
+            player.backpack.knife ++;
+            
+            var takebackpack = prompt("You took the backpack. You stop by the stream, it runs of clean endless water. \n - Fill bottle \n - Drink").toLowerCase();
+            
+            if(takebackpack == "fill bottle" || takebackpack == "fill water bottle" || takebackpack == "fill"){
+                
+                player.backpack.water.full ++;
+                
+                alert("You take your bottle and fill it with cool water, latching it back into your backpack. You go back to starting point.");
+                    Compass();
             }
             
-            else if(downstream == "go upstream"){
-                Upstream();
+            else if(takebackpack == "drink" || takebackpack == "drink stream"){
+                alert("You drink from the stream with your hands, replenishing your thirst. You walk back to starting point.")
+                    Compass();
             }
         }
         
@@ -253,13 +282,21 @@ Game();
             var removeItem = prompt("What item would you like to remove from backpack? \n - Grapple \n - Water \n - Knife");
                         
                 if(removeItem == "grapple"){
+                    if(player.backpack.grapple > 0){
                     player.backpack.grapple --;
                     alert("You take the grapple, it is heavy.");
                     Grapple();
+                    }
+                    else{
+                        alert("You have no grapple.")
+                    }
+                    Backpack();
                 }
                             
                 if(removeItem == "water"){
-                    player.backpack.water --; 
+                    
+                    player.backpack.water.full --;
+                    
                     var alpine = prompt("You take the water out of your backpack. \n - drink \n - don't drink");
                         
                 if(alpine == "drink" || alpine == "drink water"){
@@ -267,7 +304,9 @@ Game();
                 }
                         
                 else if(alpine == "don't drink" || alpine == "don't drink water"){
-                    player.backpack.water ++;
+                    
+                    player.backpack.water.full ++;
+                    
                     alert("You put the water back into your backpack.")
                 }
                     
@@ -285,8 +324,7 @@ Game();
         }
             
     }
-            
-            
+
  //           function higherRoom(){
  //               var higherRoom = prompt(" - North - South - East - West - ").toLowerCase;
                 
