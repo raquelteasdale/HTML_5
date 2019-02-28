@@ -30,24 +30,32 @@ multiline comment
 
  //     alert("Welcome to the land of Drizdal "+ playername);
 
+var inventory = {
+    daggers:0,
+    maxDaggers:5,
+}
+
 var player = {
     race:"Human",
     age:28,
-    backpack:{
+    inventory:{
+    
+        backpack:{
+    
+            grapple:0,
         
-        grapple:0,
+            coins:0,
         
-        knife:0,
-        
-        water:{
+            water:{
             
-            full:0,
+                full:0,
+            }
         }
     }
 }
 
 var backpackChk = function(){
-    alert("Grapple: "+player.backpack.grapple+"\n Water: "+player.backpack.water.full+"\n Knife: "+player.backpack.knife);
+    alert("Grapple: "+player.backpack.grapple+"\n Water: "+player.backpack.water+"\n Coins: "+player.backpack.coins);
 }
 
 function GetRandInt(max){
@@ -89,6 +97,9 @@ Game();
             
             else if(adventure == "follow compass" || adventure == "compass" || adventure == "follow"){
                 Compass();
+            }
+            else if(adventure == "skip"){
+                Grapple();
             }
             
         }
@@ -141,7 +152,7 @@ Game();
             var downstream = prompt("You find a backpack wedged between a few stones beside the stream. \n - Search backpack \n - Leave backpack");
             
             if(downstream == "search backpack" || downstream == "search"){
-                var downstream = prompt("You grab the torn backpack and unzip it. It holds rope with a grappel at the end, an empty bottle, and a knife strapped inside. \n - Take backpack \n - Drop backpack").toLowerCase();
+                var downstream = prompt("You grab the torn backpack and unzip it. It holds rope with a grappel at the end, an empty bottle, and a total of 5 coins. \n - Take backpack \n - Drop backpack").toLowerCase();
             }
             
             else if(downstream == "leave backpack" || downstream == "leave"){
@@ -164,7 +175,7 @@ Game();
             
             player.backpack.grapple ++;
             
-            player.backpack.knife ++;
+            player.backpack.coins +=5;
             
             var takebackpack = prompt("You took the backpack. You stop by the stream, it runs of clean endless water. \n - Fill bottle \n - Drink").toLowerCase();
             
@@ -279,8 +290,18 @@ Game();
         }
         
         function Backpack(){       
-            var removeItem = prompt("What item would you like to remove from backpack? \n - Grapple \n - Water \n - Knife");
-                        
+            var removeItem = prompt("What item would you like to remove from backpack? \n - Coins \n - Grapple \n - Water");
+                
+                if(removeItem == "Coins"){
+                    if(player.backpack.grapple > 0){
+                    alert("You hold the coins, they are heavy. They are of no use, you put the coins back.")
+                    }
+                    else{
+                        alert("You have no coins.")
+                    }
+                    Backpack();
+                }
+            
                 if(removeItem == "grapple"){
                     if(player.backpack.grapple > 0){
                     player.backpack.grapple --;
@@ -294,11 +315,11 @@ Game();
                 }
                             
                 if(removeItem == "water"){
-                    
+                    if(player.backpack.water > 0){
                     player.backpack.water.full --;
-                    
                     var alpine = prompt("You take the water out of your backpack. \n - drink \n - don't drink");
-                        
+                    }
+                    
                 if(alpine == "drink" || alpine == "drink water"){
                     alert("You drink the last of your water.")
                 }
@@ -309,22 +330,61 @@ Game();
                     
                     alert("You put the water back into your backpack.")
                 }
-                    
-                }
-                        
-                else if(removeItem == "knife"){
-                    alert("You hold the knife in your caloused hand. It shimmers as you twist it in the sunlight. You put it back in your backpack, it is of no use.");
+                    else{
+                        alert("You have no water.")
+                    } 
                 }
             
             Backpack();
         }
         
         function Grapple(){
-            alert("You examine the grapple, and look up at the cliff. You wish to ascend it.");
-        }
+            alert("You examine the grapple, and look up at the cliff. It looks as if there is a ledge on the cliff, leading into an open cave. You latch the grapple to the ledge and ascend, soon reaching the cave. Breathing heavily. There is an elf waiting at the entrance with a torch. It's eyes are filled with merriment and it looks happy to see you. The cave looks dark.");
             
-    }
+            var grapple = prompt("Hello. Would you like to trade? I have daggers, the trolls are horrible down there. \n - Trade \n - No thanks").toLowerCase();
+            
+            if(grapple == "trade"){
+                Trade();
+            }
+            
+            else if(grapple == "no thanks" || grapple == "no" || grapple == "no thank you"){
+                Cave();
+            }
+            
+        }
+        
+        function Trade(){
+            var daggerShop = 5;
+            var daggerPrice = 1;
+            
+            var daggerCount = prompt("How many daggers would you like to purchase? \n - Daggers: "+daggerShop).toLowerCase();
+        
+            while(!confirm("Are you sure you want to purchase "+daggerCount+" dagger(s), for "+daggerPrice+" coin(s)?")){
+                
+            var daggerCount = prompt("How many daggers would you like to purchase?").toLowerCase();
+            }
+            
+            for(i = 1; i <= daggerCount; i++){
+                inventory.daggers ++;
+                console.log("You have "+inventory.daggers+" daggers.");
+            }
+            
+            alert("You have purchased "+daggerCount+" dagger(s). Thank you, here is a torch for your journey.");
+            
+            if(daggerCount == "exit" || daggerCount == "leave"){
+            Cave();
+            }
+        }
 
+        function Cave(){
+            if (inventory.daggers >=1){
+            
+            }
+            else{
+                alert("You proceed into the dark cave, ignoring the elf's offer. You can't see anything. The compass is spinning violenly, like you are near your purpose. Though you cannot see. You get lost, bats swarm around you. Someone hits you in the back of the head, you die.")
+            }
+        }
+    }
  //           function higherRoom(){
  //               var higherRoom = prompt(" - North - South - East - West - ").toLowerCase;
                 
