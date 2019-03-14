@@ -55,7 +55,7 @@ var player = {
 }
 
 var backpackChk = function(){
-    alert("Grapple: "+player.backpack.grapple+"\n Water: "+player.backpack.water+"\n Coins: "+player.backpack.coins);
+    alert("Grapple: "+player.inventory.backpack.grapple+"\n Water: "+player.inventory.backpack.water+"\n Coins: "+player.inventory.backpack.coins);
 }
 
 function GetRandInt(max){
@@ -173,15 +173,15 @@ Game();
         
         function takeBackpack(){
             
-            player.backpack.grapple ++;
+            player.inventory.backpack.grapple ++;
             
-            player.backpack.coins +=5;
+            player.inventory.backpack.coins +=5;
             
             var takebackpack = prompt("You took the backpack. You stop by the stream, it runs of clean endless water. \n - Fill bottle \n - Drink").toLowerCase();
             
             if(takebackpack == "fill bottle" || takebackpack == "fill water bottle" || takebackpack == "fill"){
                 
-                player.backpack.water.full ++;
+                player.inventory.backpack.water.full ++;
                 
                 alert("You take your bottle and fill it with cool water, latching it back into your backpack. You go back to starting point.");
                     Compass();
@@ -252,7 +252,7 @@ Game();
             
             switch(alpine){
                 case "north" || "go north":
-                    var alpine = prompt("You go north. It seams this is the way the compass points, though the path leads to the base of a cliff in a clearing. There is no way around, you feel your shoulders heavy as you sigh, your backpack weighing you down. \n - backpack").toLowerCase();
+                    var alpine = prompt("You go north. It seams this is the way the compass points, though the path leads to the base of a cliff in a clearing. There is no way around, you feel your shoulders heavy as you sigh, your backpack weighing you down. \n - Backpack").toLowerCase();
                 
                     if(alpine == "backpack"){
                         backpackChk();
@@ -292,8 +292,8 @@ Game();
         function Backpack(){       
             var removeItem = prompt("What item would you like to remove from backpack? \n - Coins \n - Grapple \n - Water");
                 
-                if(removeItem == "Coins"){
-                    if(player.backpack.grapple > 0){
+                if(removeItem == "coins"){
+                    if(player.inventory.backpack.grapple > 0){
                     alert("You hold the coins, they are heavy. They are of no use, you put the coins back.")
                     }
                     else{
@@ -303,8 +303,8 @@ Game();
                 }
             
                 if(removeItem == "grapple"){
-                    if(player.backpack.grapple > 0){
-                    player.backpack.grapple --;
+                    if(player.inventory.backpack.grapple > 0){
+                    player.inventory.backpack.grapple --;
                     alert("You take the grapple, it is heavy.");
                     Grapple();
                     }
@@ -315,8 +315,8 @@ Game();
                 }
                             
                 if(removeItem == "water"){
-                    if(player.backpack.water > 0){
-                    player.backpack.water.full --;
+                    if(player.inventory.backpack.water > 0){
+                    player.inventory.backpack.water.full --;
                     var alpine = prompt("You take the water out of your backpack. \n - drink \n - don't drink");
                     }
                     
@@ -326,7 +326,7 @@ Game();
                         
                 else if(alpine == "don't drink" || alpine == "don't drink water"){
                     
-                    player.backpack.water.full ++;
+                    player.inventory.backpack.water.full ++;
                     
                     alert("You put the water back into your backpack.")
                 }
@@ -348,9 +348,12 @@ Game();
             }
             
             else if(grapple == "no thanks" || grapple == "no" || grapple == "no thank you"){
-                Cave();
+                Venture();
             }
-            
+        }
+        
+        function Venture(){
+            var venture = alert("You  proceed into the cave. It is dark. You trip and fall into a rivine and die.");
         }
         
         function Trade(){
@@ -370,18 +373,27 @@ Game();
             }
             
             alert("You have purchased "+daggerCount+" dagger(s). Thank you, here is a torch for your journey.");
-            
-            if(daggerCount == "exit" || daggerCount == "leave"){
-            Cave();
-            }
+                Cave();
         }
-
+        
         function Cave(){
-            if (inventory.daggers >=1){
-            
+            if(inventory.daggers >=1){
+                var cave = prompt("You venture into the cave. There is a troll, it blocks your path. You see a smiling and greeting man behind the troll. You must kill the troll to complete your adventure. \n - Throw daggers").toLowerCase();
             }
-            else{
-                alert("You proceed into the dark cave, ignoring the elf's offer. You can't see anything. The compass is spinning violenly, like you are near your purpose. Though you cannot see. You get lost, bats swarm around you. Someone hits you in the back of the head, you die.")
+          
+            if(cave == "throw daggers" || cave == "throw"){
+                Throw();
+            }
+            
+        }
+        
+        function Throw(){
+            if (inventory.daggers == 5){
+                alert("You throw 5 daggers into the Troll, exactly enough to kill it. You greet the man, he gives you a Saphire necklace, congradulating you. You have succeeded.");
+            }
+            
+            else if(inventory.daggers <= 4){
+                alert("You throw "+inventory.daggers+" at the Troll. He is hit but does not die. You are eaten by the Troll.");
             }
         }
     }
