@@ -40,6 +40,49 @@
                 left:300px;
                 top:525px;
             }
+            div#triangle{
+                width:0;
+                height:0;
+                border-left:50px solid transparent;
+                border-right:50px solid transparent;
+                border-bottom:75px solid grey;
+                position:absolute;
+                left:375px;
+                top:400px;
+            }
+            div#diamond-1{
+                width:0;
+                height:0;
+                border-left:50px solid transparent;
+                border-right:50px solid transparent;
+                border-bottom:75px solid cornsilk;
+                position:absolute;
+                left:600px;
+                top:750px;
+            }
+            div#diamond-2{
+                width:0;
+                height:0;
+                border-left:50px solid transparent;
+                border-right:50px solid transparent;
+                border-top:75px solid cornsilk;
+                position:absolute;
+                left:600px;
+                top:825px;
+            }
+            /* Styling an image */
+            img#ninja-star{
+                display:block;
+                width:auto;
+                height:auto;
+                border:outset 5px red;
+                position:absolute;
+                top:275px;
+                left:150px;
+                border-radius:45%;
+                box-shadow:5px 5px 10px;
+                z-index:0;
+            }
         </style>
     </head>
     <body>
@@ -47,5 +90,9 @@
         <h3>Vol.1</h3>
         <div id="box"></div>
         <div id="circle"></div>
+        <div id="triangle"></div>
+        <div id="diamond-1"></div>
+        <div id="diamond-2"></div>
+        <img src="ninja-star.jpg" id="ninja-star">
     </body>
 </html>
