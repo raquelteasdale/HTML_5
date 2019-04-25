@@ -1,1 +1,96 @@
 /* Stylesheet for Mobile App */
+/* Reset */
+
+
+
+
+
+
+
+
+
+html,body,div,p,ul,ol,li,h1,h2,h3,h4,h5,h6
+{
+    margin:0;
+    padding:0;
+}
+
+body{
+    background-color:darkseagreen;
+}
+
+div#container{
+    width:1200px;
+    
+    border:3px dashed cadetblue;
+    background-color:darkgrey;
+    background-image:url("screen-shot-2017-02-09-at-8-01-08-pm.png");
+}
+
+header{
+    width:91.5%;
+    padding:50px;
+    background-color:burlywood;
+}
+
+header h1{
+    color:floralwhite;
+    font-family: "Tahoma",sans-serif;
+    font-size: 2.5em;
+}
+
+div#content{
+    width:100%;
+    color:bisque;
+    background-color:beige;
+    font-family: inherit;
+    font-size:1.7em;
+}
+
+nav{
+    background-color:cornflowerblue;
+    color:aliceblue;
+    font-family: sans-serif;
+    font-size: 1.5em;
+}
+nav ul{
+    list-style: none;
+}
+
+nav ul li a{
+    float: left;
+    display: block;
+    padding:5px 15px;
+    border-right: 1px solid #af904a;
+    color:ghostwhite;
+    text-decoration: none;
+}
+
+nav ul li a:hover{
+    background-color:antiquewhite;
+    color:fuchsia;
+}
+
+footer{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:50px;
+    background-color:lightblue;
+}
+
+div.keepOpen{
+    clear: both;
+}
+
+@media screen and(max-width: 600px) {
+    div#container{
+        width:100%;
+    }
+    
+    nav ul li a{
+        float:none;
+        text-align:center;
+    }
+}
