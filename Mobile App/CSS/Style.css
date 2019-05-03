@@ -31,12 +31,20 @@ header{
     width:91.5%;
     padding:50px;
     background-color:azure;
+    text-align: center;
+}
+
+header img#applogo{
+    display: block;
+    margin: auto;
+    width: 100px;
 }
 
 header h1{
     color:crimson;
     font-family: "Tahoma",sans-serif;
     font-size: 2.5em;
+    text-align: center;
 }
 
 div#content{
