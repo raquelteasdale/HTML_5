@@ -16,21 +16,25 @@ html,body,div,p,ul,ol,li,h1,h2,h3,h4,h5,h6
 }
 
 body{
+    width:1206px;
+    
+    border: 5px dashed darkred; 
     background-color:floralwhite;
+    background-image:url("applogo.jpg");
 }
 
 div#container{
     width:1200px;
     
-    border:3px dashed cadetblue;
-    background-color:darkgrey;
-    background-image:url("screen-shot-2017-02-09-at-8-01-08-pm.png");
+    border:3px dashed darkred;
+    background-color:darkgray;
+    background-image:url("applogo.jpg");
 }
 
 header{
     width:91.5%;
     padding:50px;
-    background-color:azure;
+    background-color:lightgray;
     text-align: center;
 }
 
@@ -41,7 +45,7 @@ header img#applogo{
 }
 
 header h1{
-    color:crimson;
+    color:darkred;
     font-family: "Tahoma",sans-serif;
     font-size: 2.5em;
     text-align: center;
@@ -49,8 +53,8 @@ header h1{
 
 div#content{
     width:100%;
-    color:bisque;
-    background-color:darkgrey;
+    color:cornsilk;
+    background-color:darkred;
     font-family: inherit;
     font-size:1.7em;
 }
@@ -88,7 +92,7 @@ nav ul li achover{
     bottom:0;
     left:0;
     width: 100%;
-    background-color: #555;
+    background-color:darkred;
     overflow: auto;
 }
 
@@ -98,16 +102,16 @@ nav ul li achover{
     text-align: center;
     padding: 12px 0;
     transition: all 0.3s ease;
-    color: white;
-    font-size 36px;
+    color:cornsilk;
+    font-size 45px;
 }
 
 .icon-bar a:hover {
-    background-color: #000;
+    background-color:cornsilk;
 }
 
 .active {
-    background-color: #ffa20e;
+    background-color:lightgray;
 }
 
 /*
