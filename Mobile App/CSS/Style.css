@@ -18,7 +18,7 @@ html,body,div,p,ul,ol,li,h1,h2,h3,h4,h5,h6
 body{
     width:1206px;
     
-    border: 5px dashed darkred; 
+    border: 5px dashed cadetblue; 
     background-color:floralwhite;
     background-image:url("applogo.jpg");
 }
@@ -26,7 +26,7 @@ body{
 div#container{
     width:1200px;
     
-    border:3px dashed darkred;
+    border:3px dashed cadetblue;
     background-color:darkgray;
     background-image:url("applogo.jpg");
 }
@@ -45,7 +45,7 @@ header img#applogo{
 }
 
 header h1{
-    color:darkred;
+    color:cadetblue;
     font-family: "Tahoma",sans-serif;
     font-size: 2.5em;
     text-align: center;
@@ -54,7 +54,7 @@ header h1{
 div#content{
     width:100%;
     color:cornsilk;
-    background-color:darkred;
+    background-color:cadetblue;
     font-family: inherit;
     font-size:1.7em;
 }
@@ -88,11 +88,11 @@ nav ul li achover{
 */
 
 .icon-bar {
-    position:absolute;
+    position:fixed;
     bottom:0;
     left:0;
     width: 100%;
-    background-color:darkred;
+    background-color:cadetblue;
     overflow: auto;
 }
 
@@ -142,3 +142,26 @@ div.keepOpen{
         float:none;
         text-align:center;
     }*/
+
+div#product_grp{
+    width:auto;
+    margin:auto;
+}
+
+figure.product{
+    width:200;
+    background-color:darkgray;
+}
+
+figure.product: img{
+    display:black;padding:10px 0;
+    width:auto;
+    margin:auto;
+}
+
+figure.product: figcaption{
+    text-align: center;
+    color:black;
+    font-family: fantasy;
+    font-size:24px;
+}
