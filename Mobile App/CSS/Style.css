@@ -133,6 +133,8 @@ div.keepOpen{
     clear: both;
 }
 
+*/
+
 @media screen and(max-width: 600px) {
     div#container{
         width:100%;
@@ -141,7 +143,7 @@ div.keepOpen{
     nav ul li a{
         float:none;
         text-align:center;
-    }*/
+    }
 
 div#product_grp{
     width:auto;
@@ -153,9 +155,9 @@ figure.product{
     background-color:darkgray;
 }
 
-figure.product: img{
+figure.product img{
     display:black;padding:10px 0;
-    width:auto;
+    width:100px;
     margin:auto;
 }
 
