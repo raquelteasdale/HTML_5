@@ -1,14 +1,6 @@
 /* Stylesheet for Mobile App */
 /* Reset */
 
-
-
-
-
-
-
-
-
 html,body,div,p,ul,ol,li,h1,h2,h3,h4,h5,h6
 {
     margin:0;
@@ -16,26 +8,19 @@ html,body,div,p,ul,ol,li,h1,h2,h3,h4,h5,h6
 }
 
 body{
-    width:1206px;
-    
-    border: 5px dashed cadetblue; 
     background-color:floralwhite;
-    background-image:url("applogo.jpg");
 }
 
 div#container{
-    width:1200px;
-    
+    width:100%;
     border:3px dashed cadetblue;
-    background-color:darkgray;
-    background-image:url("applogo.jpg");
+    background-color:cadetblue;
 }
 
 header{
     width:91.5%;
     padding:50px;
     background-color:lightgray;
-    text-align: center;
 }
 
 header img#applogo{
@@ -52,12 +37,17 @@ header h1{
 }
 
 div#content{
-    width:100%;
     color:cornsilk;
-    background-color:cadetblue;
+    text-align: center;
     font-family: inherit;
     font-size:1.7em;
 }
+
+div#content h3{
+    text-align:center;
+}
+
+
 
 /*
 nav{
@@ -81,9 +71,9 @@ nav ul li a{
     text-decoration: none;
 }
 
-nav ul li achover{
-    background-color:anntiquewhite;
-    color:darkslategray;
+nav ul li a:hover{
+    background-color:antiquewhite;
+    color:fuchsia;
 }
 */
 
@@ -115,10 +105,6 @@ nav ul li achover{
 }
 
 /*
-nav ul li a:hover{
-    background-color:antiquewhite;
-    color:fuchsia;
-}
 
 footer{
     position:absolute;
@@ -129,35 +115,28 @@ footer{
     background-color:lightblue;
 }
 
-div.keepOpen{
-    clear: both;
-}
-
 */
 
-@media screen and(max-width: 600px) {
-    div#container{
-        width:100%;
-    }
-    
-    nav ul li a{
-        float:none;
-        text-align:center;
-    }
-
 div#product_grp{
-    width:auto;
+    max-width:60%;
+    min-width:20%;
     margin:auto;
 }
 
 figure.product{
-    width:200;
+    display:block;
+    float:left;
+    margin:10px 15px;
+    min-width:30%;
+    max-width:45%;
     background-color:darkgray;
+    border-radius:5%;
 }
 
 figure.product img{
-    display:black;padding:10px 0;
-    width:100px;
+    display:block;
+    padding:10px 0;
+    width:1=80%;
     margin:auto;
 }
 
@@ -167,3 +146,31 @@ figure.product: figcaption{
     font-family: fantasy;
     font-size:24px;
 }
+
+div.keepOpen{
+    clear: both;
+}
+
+@media screen and(max-width: 600px) {
+    figure.product{
+        float:none;
+        margin:10px auto;
+        min-width:50%;
+        max-width:100%;
+        background-color: cadetblue;
+        border-radius:5%;
+    }
+    figure.product figcaption{
+    text-align: center;
+    color:white;
+    font-family: fantasy;
+    font-size:12px;
+}
+    
+    legend, span, input, textarea {
+        display:block;
+        margin:auto;
+        text-decoration-style:center;
+        font-family:sans-serif;
+        color:blue;
+    }
